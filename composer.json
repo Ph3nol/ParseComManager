@@ -1,0 +1,23 @@
+{
+    "name": "sly/parsecom-manager",
+    "description": "Manage API queries to Parse.com cloud service.",
+    "require": {
+        "symfony/yaml": "dev-master",
+        "kriswallsmith/buzz": "dev-master"
+    },
+    "require-dev": {
+        "atoum/atoum": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Cédric Dugat",
+            "email": "cedric@dugat.me"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Sly": ["src/"]
+        }
+    }
+}

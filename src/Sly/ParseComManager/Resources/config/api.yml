@@ -1,0 +1,3 @@
+login:
+    method: get
+    url: /login
