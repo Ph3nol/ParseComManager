@@ -18,7 +18,7 @@ class Query
     private $key;
     private $method;
     private $url;
-    private $properties;
+    private $properties = array();
 
     /**
      * Constructor.
