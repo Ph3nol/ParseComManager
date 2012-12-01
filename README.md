@@ -42,11 +42,12 @@ use Sly\ParseComManager\Query\Query;
 /**
  * Initialize the manager with your application ID and REST API key.
  */
-$manager = new Manager(
-    'YourAppID',
-    'YourMasterKey',
-    'YourRESTAPIKey'
-);
+$manager = new Manager(array(
+    'appID'        => 'XXXXX',
+    'masterKey'    => 'XXXXX',
+    'apiKey'       => 'XXXXX',
+    'sessionToken' => null, // Optional session token
+));
 
 /**
  * Initialize the query with 'login' API part parameters.

@@ -19,16 +19,11 @@ class Manager
     /**
      * Constructor.
      * 
-     * @param string $appID  Parse.com application ID
-     * @param string $apiKey Parse.com REST API key
+     * @param string $config Parse.com configuration
      */
-    public function __construct($appID, $masterKey, $apiKey)
+    public function __construct(array $config)
     {
-        $this->client = new Client(array(
-            'appID'     => $appID,
-            'masterKey' => $masterKey,
-            'apiKey'    => $apiKey,
-        ));
+        $this->client = new Client($config);
     }
 
     /**
