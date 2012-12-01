@@ -44,6 +44,7 @@ use Sly\ParseComManager\Query\Query;
  */
 $manager = new Manager(
     'YourAppID',
+    'YourMasterKey',
     'YourRESTAPIKey'
 );
 
