@@ -2,6 +2,7 @@
 
 namespace Sly\ParseComManager\Query;
 
+use Sly\ParseComManager\Exception\ConfigurationException;
 use Sly\ParseComManager\Config\YamlConfigLoader;
 use Symfony\Component\Yaml\Yaml;
 
@@ -33,7 +34,7 @@ class Query
         }
 
         if (false === array_key_exists($key, $this->config)) {
-            throw new \Exception(sprintf('API config file has no "%s" key', $key));
+            throw new ConfigurationException(sprintf('API config file has no "%s" key', $key));
         }
 
         $this->key    = $key;

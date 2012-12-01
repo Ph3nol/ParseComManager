@@ -2,6 +2,7 @@
 
 namespace Sly\ParseComManager\Manager;
 
+use Sly\ParseComManager\Exception\NotFoundHttpException;
 use Sly\ParseComManager\Client\Client;
 use Sly\ParseComManager\Query\Query;
 
@@ -44,6 +45,12 @@ class Manager
             $query->getUrl(),
             $query->getProperties()
         );
+
+        $headers = $response->getHeaders();
+
+        if ('HTTP/1.1 404 Not Found' === $headers[0]) {
+            throw new NotFoundHttpException('API request failed (404 error returned)');
+        }
 
         return ('api' == $output) ? $response->getContent() : $response;
     }
