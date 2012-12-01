@@ -2,6 +2,33 @@
 
 Manage API queries to Parse.com cloud service.
 
+[![Continuous Integration status](https://secure.travis-ci.org/Ph3nol/ParseComManager.png)](http://travis-ci.org/Ph3nol/ParseComManager)
+
+## Requirements
+
+* PHP 5.3+
+* PHP Curl extension
+
+## Installation
+
+### Add to your project Composer packages
+
+Just add `sly/parsecom-manager` package to the requirements of your Composer JSON configuration file,
+and run `php composer.phar install` to install it.
+
+### Install from GitHub
+
+Clone this library from Git with `git clone https://github.com/Ph3nol/ParseComManager.git`.
+
+Goto to the library directory, get Composer phar package and install vendors:
+
+```
+curl -s https://getcomposer.org/installer | php
+php composer.phar install
+```
+
+You're ready to go.
+
 ## Usage
 
 ``` php
@@ -82,3 +109,13 @@ Base one is declared as `Sly\ParseComManager\Query\Query::API_BASE_URL` constant
 You can use keys into a URL, like retrieveUser '%userKey%' case.
 Just set a 'userKey' property to your query, as usual, it will be replaced
 in your URL.
+
+## Test with Atoum
+
+This library is using [Atoum](https://github.com/atoum/atoum) for unit testing,
+whose Composer package can be installed with `dev` mode:
+
+```
+php composer install --dev
+./atoum -d tests/units
+```
