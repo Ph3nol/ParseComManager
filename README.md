@@ -75,12 +75,8 @@ $query->addProperties(array(
  * You can use 'client' second argument to get the client response.
  * Example: $clientResponse = $manager->execute($query, 'client');
  */
-$apiResponse = $manager->execute($query);
+$userFromApi = $manager->execute($query);
 
-/**
- * Construct user from JSON response.
- */
-$user = json_decode($apiResponse);
 ```
 
 ## YAML API config file
