@@ -41,10 +41,11 @@ class Client
             array(
                 'X-Parse-Application-Id' => $this->appID,
                 'X-Parse-REST-API-Key'   => $this->apiKey,
-                'Content-Type'           => 'application/json',
             ),
             $properties
         );
+
+        $request->setHeader('Content-Type', 'application/json');
 
         $response = $request->send();
 
