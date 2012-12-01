@@ -12,8 +12,6 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Query
 {
-    const BASE_API_URL = 'https://api.parse.com/1';
-
     private $config;
     private $key;
     private $method;
@@ -23,17 +21,22 @@ class Query
     /**
      * Constructor.
      * 
-     * @param string $key Query key
+     * @param string $key             Query key
+     * @param string $specificAPIFile Specific API file path
      */
-    public function __construct($key)
+    public function __construct($key, $specificAPIFile = null)
     {
-        $this->key    = $key;
-        $this->config = Yaml::parse(__DIR__.'/../Resources/config/api.yml');
-
-        if (false === array_key_exists($key, $this->config)) {
-            throw new \Exception(sprintf('API config has no "%s" key', $key));
+        if ($specificAPIFile && true === file_exists($specificAPIFile)) {
+            $this->config = Yaml::parse($specificAPIFile);
+        } else {
+            $this->config = Yaml::parse(__DIR__.'/../Resources/config/api.yml');
         }
 
+        if (false === array_key_exists($key, $this->config)) {
+            throw new \Exception(sprintf('API config file has no "%s" key', $key));
+        }
+
+        $this->key    = $key;
         $this->method = $this->config[$key]['method'];
         $this->url    = $this->config[$key]['url'];
     }
@@ -55,7 +58,7 @@ class Query
      */
     public function getUrl()
     {
-        return self::BASE_API_URL.$this->url;
+        return $this->url;
     }
 
     /**

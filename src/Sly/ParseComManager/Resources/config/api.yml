@@ -1,3 +1,7 @@
+signup:
+    method: post
+    url: https://api.parse.com/1/login
+
 login:
     method: get
-    url: /login
+    url: https://api.parse.com/1/login

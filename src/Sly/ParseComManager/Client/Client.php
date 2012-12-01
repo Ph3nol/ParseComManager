@@ -43,6 +43,7 @@ class Client
             case 'get':
                 $browserMethod = RequestInterface::METHOD_GET;
                 break;
+
             case 'post':
                 $browserMethod = RequestInterface::METHOD_POST;
                 break;
