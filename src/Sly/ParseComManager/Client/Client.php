@@ -38,20 +38,10 @@ class Client
      */
     public function getResponse($method, $url, $properties)
     {
-        switch ($method) {
-            default:
-            case 'get':
-                $browserMethod = RequestInterface::METHOD_GET;
-                break;
-            case 'post':
-                $browserMethod = RequestInterface::METHOD_POST;
-                break;
-        }
-
         return $this->browser->submit(
             $url,
             $properties,
-            $browserMethod,
+            strtoupper($method),
             array(
                 'X-Parse-Application-Id' => $this->appID,
                 'X-Parse-REST-API-Key'   => $this->apiKey,
