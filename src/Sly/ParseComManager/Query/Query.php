@@ -42,7 +42,7 @@ class Query
     }
 
     /**
-     * Query query method.
+     * Query method.
      * 
      * @return string
      */
@@ -52,13 +52,24 @@ class Query
     }
 
     /**
-     * Query query url.
+     * Query url.
      * 
      * @return string
      */
     public function getUrl()
     {
-        return $this->url;
+        $url = $this->url;
+
+        foreach ($this->properties as $key => $value) {
+            $r = "/%$key%/i";
+
+            if (preg_match($r, $url)) {
+                $url = str_replace("%$key%", $value, $url);
+                unset($this->properties[$key]);
+            }
+        }
+
+        return $url;
     }
 
     /**

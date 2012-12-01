@@ -5,3 +5,7 @@ signup:
 login:
     method: get
     url: https://api.parse.com/1/login
+
+retrieveUser:
+    method: get
+    url: https://api.parse.com/1/users/%userKey%

@@ -63,11 +63,19 @@ You can use your own YAML API config file. Here is an example:
 ``` yaml
 signup:
     method: post
-    url: https://api.parse.com/1/users
+    url: https://api.parse.com/1/login
 
 login:
     method: get
     url: https://api.parse.com/1/login
 
+retrieveUser:
+    method: get
+    url: https://api.parse.com/1/users/%userKey%
+
 # ...
 ```
+
+You can use keys into a URL, like retrieveUser '%userKey%' case.
+Just set a 'userKey' property to your query, as usual, it will be replaced
+in your URL.
