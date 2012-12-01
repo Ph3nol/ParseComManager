@@ -27,13 +27,17 @@ class Manager
 
     /**
      * Execute query.
+     *
+     * Output formats:
+     * - 'api' (default): native API output format
+     * - 'client': library client output format
      * 
-     * @param \Sly\ParseComManager\Query\Query $query        Query
-     * @param boolan                           $objectOutput Object output formatted
+     * @param \Sly\ParseComManager\Query\Query $query  Query
+     * @param boolan                           $output Output format
      * 
      * @return object|string
      */
-    public function execute(Query $query, $objectOutput = true)
+    public function execute(Query $query, $output = 'api')
     {
         $response = $this->client->getResponse(
             $query->getMethod(),
@@ -41,6 +45,6 @@ class Manager
             $query->getProperties()
         );
 
-        return $objectOutput ? json_decode($response) : $response;
+        return ('api' == $output) ? $response->getContent() : $response;
     }
 }
