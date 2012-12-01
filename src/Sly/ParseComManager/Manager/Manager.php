@@ -50,23 +50,6 @@ class Manager
             $query->getProperties()
         );
 
-        $headers       = $response->getHeaders();
-        $content       = $response->getContent();
-        $contentObject = json_decode($content);
-
-        if (null === $contentObject && 'HTTP/1.1 404 Not Found' === $headers[0]) {
-            throw new NotFoundHttpException('API request failed (404 error returned)');
-        } elseif ($contentObject && isset($contentObject->error)) {
-            throw new ApiException(
-                sprintf(
-                    '%s API error / %s (code: %d)',
-                    $headers[0],
-                    ucfirst($contentObject->error),
-                    $contentObject->code
-                )
-            );
-        }
-
-        return ('api' == $output) ? $content : $response;
+        return ('api' == $output) ? $response->json() : $response;
     }
 }

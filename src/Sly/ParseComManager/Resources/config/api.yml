@@ -1,11 +1,11 @@
 signup:
     method: post
-    url: https://api.parse.com/1/users
+    url: /users
 
 login:
     method: get
-    url: https://api.parse.com/1/login
+    url: /login
 
 retrieveUser:
     method: get
-    url: https://api.parse.com/1/users/%userKey%
+    url: /users/%userKey%

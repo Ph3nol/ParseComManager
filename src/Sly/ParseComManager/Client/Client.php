@@ -2,10 +2,8 @@
 
 namespace Sly\ParseComManager\Client;
 
-use Buzz\Browser;
-use Buzz\Message\RequestInterface;
-use Buzz\Message\Response;
-use Buzz\Client\Curl;
+use Guzzle\Http\Client as BaseClient;
+use Sly\ParseComManager\Query\Query;
 
 /**
  * Client.
@@ -14,7 +12,7 @@ use Buzz\Client\Curl;
  */
 class Client
 {
-    private $browser;
+    private $client;
     private $appID;
     private $apiKey;
 
@@ -26,27 +24,30 @@ class Client
      */
     public function __construct($appID, $apiKey)
     {
-        $this->browser = new Browser(new Curl());
-        $this->appID   = $appID;
-        $this->apiKey  = $apiKey;
+        $this->client = new BaseClient();
+        $this->appID  = $appID;
+        $this->apiKey = $apiKey;
     }
 
     /**
-     * Get browser response.
+     * Get client response.
      * 
      * @return string
      */
     public function getResponse($method, $url, $properties)
     {
-        return $this->browser->submit(
-            $url,
-            $properties,
-            strtoupper($method),
+        $request = $this->client->$method(
+            Query::API_BASE_URL.$url,
             array(
                 'X-Parse-Application-Id' => $this->appID,
                 'X-Parse-REST-API-Key'   => $this->apiKey,
                 'Content-Type'           => 'application/json',
-            )
+            ),
+            $properties
         );
+
+        $response = $request->send();
+
+        return $response;
     }
 }

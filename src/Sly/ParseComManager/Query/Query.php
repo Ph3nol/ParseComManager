@@ -7,12 +7,14 @@ use Sly\ParseComManager\Config\YamlConfigLoader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Query.
+ * Parse.com queries.
  *
  * @author Cédric Dugat <cedric@dugat.me>
  */
 class Query
 {
+    const API_BASE_URL = 'https://api.parse.com/1';
+
     private $config;
     private $key;
     private $method;

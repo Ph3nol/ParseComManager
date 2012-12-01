@@ -3,7 +3,7 @@
     "description": "Manage API queries to Parse.com cloud service.",
     "require": {
         "symfony/yaml": "dev-master",
-        "kriswallsmith/buzz": "dev-master"
+        "guzzle/guzzle": "*"
     },
     "require-dev": {
         "atoum/atoum": "dev-master"

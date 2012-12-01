@@ -63,18 +63,21 @@ You can use your own YAML API config file. Here is an example:
 ``` yaml
 signup:
     method: post
-    url: https://api.parse.com/1/login
+    url: /login
 
 login:
     method: get
-    url: https://api.parse.com/1/login
+    url: /login
 
 retrieveUser:
     method: get
-    url: https://api.parse.com/1/users/%userKey%
+    url: /users/%userKey%
 
 # ...
 ```
+
+Be careful: URLs are relative ones.
+Base one is declared as `Sly\ParseComManager\Query\Query::API_BASE_URL` constant.
 
 You can use keys into a URL, like retrieveUser '%userKey%' case.
 Just set a 'userKey' property to your query, as usual, it will be replaced
