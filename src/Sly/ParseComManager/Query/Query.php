@@ -24,6 +24,8 @@ class Query
      * 
      * @param string $key             Query key
      * @param string $specificAPIFile Specific API file path
+     *
+     * @throws Sly\ParseComManager\Exception\ConfigurationException
      */
     public function __construct($key, $specificAPIFile = null)
     {
