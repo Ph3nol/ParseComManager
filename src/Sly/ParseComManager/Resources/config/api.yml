@@ -1,6 +1,6 @@
 signup:
     method: post
-    url: https://api.parse.com/1/login
+    url: https://api.parse.com/1/users
 
 login:
     method: get
