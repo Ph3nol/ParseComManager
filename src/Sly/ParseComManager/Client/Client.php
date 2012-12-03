@@ -15,9 +15,6 @@ class Client
 {
     private $client;
     private $config;
-    private $appID;
-    private $masterKey;
-    private $apiKey;
 
     /**
      * Constructor.
